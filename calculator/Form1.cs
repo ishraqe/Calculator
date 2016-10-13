@@ -56,7 +56,10 @@ namespace calculator
 
             resultValue = Double.Parse(textBox1_result.Text);
             isOperationPerformed = true;
-            labelOperation.Text = resultValue + " " + operationPerformed;
+           
+                labelOperation.Text = resultValue + " " + operationPerformed;
+          
+            
 
         }
 
@@ -89,7 +92,49 @@ namespace calculator
                 case "/":
                     textBox1_result.Text = (resultValue / Double.Parse(textBox1_result.Text)).ToString();
                     break;
-              
+
+                case "sin":
+
+                    textBox1_result.Text = (Math.Sin((Convert.ToDouble(Math.PI) / 180) * (Convert.ToDouble(textBox1_result.Text)))).ToString();
+                    break;
+                case "cos":
+                    textBox1_result.Text = (Math.Cos((Convert.ToDouble(Math.PI) / 180) * (Convert.ToDouble(textBox1_result.Text)))).ToString();
+                    break;
+                case "tan":
+                    textBox1_result.Text = (Math.Tan((Convert.ToDouble(Math.PI) / 180) * (Convert.ToDouble(textBox1_result.Text)))).ToString();
+                    break;
+
+                case "sin-1":
+                    textBox1_result.Text = (Math.Asin((Convert.ToDouble(Math.PI) / 180) * (Convert.ToDouble(textBox1_result.Text)))).ToString();
+                    break;
+                case "cos-1":
+
+                    textBox1_result.Text = (Math.Acos((Convert.ToDouble(Math.PI) / 180) * (Convert.ToDouble(textBox1_result.Text)))).ToString();
+                    break;
+                case "tan-1":
+
+                    textBox1_result.Text = (Math.Atan((Convert.ToDouble(Math.PI) / 180) * (Convert.ToDouble(textBox1_result.Text)))).ToString();
+                    break;
+                case "^":
+
+                    textBox1_result.Text = Convert.ToString(System.Math.Pow(Convert.ToDouble(resultValue), Convert.ToDouble(textBox1_result.Text)));
+                    break;
+                case "%":
+                    textBox1_result.Text = Convert.ToString(Convert.ToDouble(resultValue) % Convert.ToDouble(textBox1_result.Text));
+                    break;
+                case "x!":
+
+                    textBox1_result.Text = Convert.ToString(1/ Convert.ToDouble(resultValue));
+                    break;
+                case "log10":
+
+                    textBox1_result.Text = Convert.ToString(System.Math.Log10(Convert.ToDouble(textBox1_result.Text)));
+                    break;
+                case "log":
+
+                    textBox1_result.Text = Convert.ToString(System.Math.Log(Convert.ToDouble(textBox1_result.Text)));
+                    break;
+
 
 
                 default:
@@ -98,6 +143,15 @@ namespace calculator
             }
         }
 
-       
+        private void back(object sender, EventArgs e)
+        {
+           string no1 = textBox1_result.Text;
+            int n = no1.Length;
+            if (n!=0)
+            {
+                textBox1_result.Text = (no1.Substring(0, n - 1));
+            }
+           
+        }
     }
 }
